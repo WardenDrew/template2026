@@ -1,0 +1,22 @@
+$primary: #26e0b5;
+$secondary: #122c2f;
+$accent: #27f1c3;
+
+$dark: #0b1418;
+$dark-page: #050a0c;
+$text-theme-dark: $dark-page;
+
+$positive: #26e0b5;
+$negative: #f25757;
+$info: #4fa9e8;
+
+@mixin app-theme {
+  .text-theme-dark {
+    color: $text-theme-dark !important;
+  }
+
+  .bg-primary.text-white,
+  .q-banner.bg-positive.text-white {
+    color: $text-theme-dark !important;
+  }
+}

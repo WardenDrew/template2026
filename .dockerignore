@@ -1,0 +1,14 @@
+.git
+.agents
+.codex
+**/bin/
+**/obj/
+app/node_modules/
+app/.quasar/
+app/dist/
+app/.yarn/cache/
+app/.yarn/berry/
+app/.yarn/install-state.gz
+appsettings.local.json
+**/appsettings.local.json
+secrets/

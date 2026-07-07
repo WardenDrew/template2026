@@ -1,0 +1,39 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: web.Dockerfile
+    ports:
+      - "5000:80"
+    depends_on:
+      - api
+
+  api:
+    build:
+      context: .
+      dockerfile: api.Dockerfile
+    volumes:
+      - type: bind
+        source: ./conf
+        target: /app/conf
+        read_only: true
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: template
+      POSTGRES_USER: template
+      POSTGRES_PASSWORD: template_password
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U template -d template"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+volumes:
+  postgres-data:

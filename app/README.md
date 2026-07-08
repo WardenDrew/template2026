@@ -18,6 +18,9 @@ This template captures the reusable Quasar/Vue app shape:
 app/
   package.json
   quasar.config.ts
+  src-capacitor/
+    capacitor.config.ts
+    android/
   src/
     App.vue
     css/
@@ -137,4 +140,18 @@ yarn install --immutable
 yarn lint:check
 yarn typecheck
 yarn build
+yarn build:android
 ```
+
+Capacitor Android builds follow Quasar's Capacitor mode. The Docker wrapper in
+the repository root provides the Android SDK/JDK environment and then runs:
+
+```sh
+yarn quasar build -m capacitor -T android
+```
+
+Quasar writes web assets into `src-capacitor/www`, syncs the native Android
+project, and places build output under `dist/capacitor`. Use
+`../scripts/build-android-apk.sh` from this app folder, or
+`./scripts/build-android-apk.sh` from the repository root, to publish the APK to
+root `appdist/`.

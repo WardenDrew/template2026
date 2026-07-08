@@ -29,6 +29,8 @@ repository's product-specific implementation.
   before ending.
 - For modified Quasar projects, run `yarn lint:check`, `yarn typecheck`, and
   `yarn build` from the app folder.
+- Do not start or leave `yarn dev`/`quasar dev` running as a handoff step.
+  Human browser testing uses Docker Compose from the project root.
 - For Docker/local stack changes, run `docker compose config` from the project
   root.
 - If a command cannot be run, report that clearly with the reason.

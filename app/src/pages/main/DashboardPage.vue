@@ -1,5 +1,5 @@
 <template>
-  <div class="column q-gutter-md">
+  <div class="column q-gutter-y-md">
     <q-banner v-if="errorMessage" rounded class="bg-negative text-white">
       {{ errorMessage }}
     </q-banner>

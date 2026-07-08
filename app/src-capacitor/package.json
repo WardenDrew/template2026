@@ -1,0 +1,13 @@
+{
+  "name": "template-app-capacitor",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Quasar Capacitor workspace for the Android app",
+  "dependencies": {
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/app": "^8.0.0",
+    "@capacitor/cli": "^8.0.0",
+    "@capacitor/core": "^8.0.0"
+  },
+  "packageManager": "yarn@4.13.0"
+}

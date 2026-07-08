@@ -7,6 +7,13 @@ app/dist/
 app/.yarn/cache/
 app/.yarn/berry/
 app/.yarn/install-state.gz
+app/src-capacitor/node_modules/
+app/src-capacitor/.yarn/
+app/src-capacitor/www/
+app/src-capacitor/android/.gradle/
+app/src-capacitor/android/local.properties
+app/src-capacitor/android/**/build/
+appdist/
 
 appsettings.local.json
 **/appsettings.local.json

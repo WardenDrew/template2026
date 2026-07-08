@@ -5,11 +5,11 @@
         <q-btn
           flat
           dense
-          round
-          icon="mdi-menu"
           aria-label="Toggle navigation"
           @click="toggleMainDrawer"
-        />
+        >
+          <q-icon :name="mainDrawerToggleIcon" class="q-px-xs" />
+        </q-btn>
 
         <q-toolbar-title> Template App </q-toolbar-title>
       </q-toolbar>
@@ -25,7 +25,33 @@
       :width="280"
     >
       <q-list padding>
-        <q-item-label header>Template App</q-item-label>
+        <q-item-label header>
+          <div class="row items-center no-wrap">
+            <div class="col">Template App</div>
+
+            <q-btn
+              v-if="isDesktop"
+              flat
+              dense
+              round
+              :icon="mainDrawerPersistent ? 'mdi-pin' : 'mdi-pin-off'"
+              :aria-label="
+                mainDrawerPersistent
+                  ? 'Disable persistent navigation'
+                  : 'Keep navigation open'
+              "
+              @click="toggleMainDrawerPersistent"
+            >
+              <q-tooltip>
+                {{
+                  mainDrawerPersistent
+                    ? "Disable persistent navigation"
+                    : "Keep navigation open"
+                }}
+              </q-tooltip>
+            </q-btn>
+          </div>
+        </q-item-label>
 
         <q-item
           v-for="navItem in visibleNavigationItems"
@@ -60,8 +86,8 @@
 
     <q-page-container>
       <q-page class="q-pa-md">
-        <div class="column q-gutter-md">
-          <div v-if="showPageHeader" class="column q-gutter-sm">
+        <div class="column q-gutter-y-md">
+          <div v-if="showPageHeader" class="column q-gutter-y-sm">
             <q-breadcrumbs v-if="breadcrumbs.length > 0" class="text-grey-6">
               <q-breadcrumbs-el
                 v-for="breadcrumb in breadcrumbs"
@@ -82,7 +108,7 @@
                 aria-label="Back"
               />
 
-              <div class="column q-gutter-xs">
+              <div class="column q-gutter-y-xs">
                 <div class="text-h5 text-weight-medium">
                   {{ pageTitle }}
                 </div>
@@ -104,11 +130,11 @@
         <q-btn
           flat
           dense
-          round
-          icon="mdi-menu"
           aria-label="Toggle navigation"
           @click="toggleMainDrawer"
-        />
+        >
+          <q-icon :name="mainDrawerToggleIcon" class="q-px-xs" />
+        </q-btn>
 
         <q-btn
           flat
@@ -147,6 +173,9 @@ const mainDrawerOverlay = computed(
 );
 const mainDrawerBehavior = computed(() =>
   mainDrawerOverlay.value ? "mobile" : "desktop"
+);
+const mainDrawerToggleIcon = computed(() =>
+  mainDrawerOpen.value ? "mdi-menu-open" : "mdi-menu-close"
 );
 const pageTitle = computed(() => route.meta.title ?? "");
 const pageSubtitle = computed(() => route.meta.subtitle ?? "");
@@ -188,6 +217,14 @@ watch(
 
 function toggleMainDrawer() {
   mainDrawerOpen.value = !mainDrawerOpen.value;
+}
+
+function toggleMainDrawerPersistent() {
+  mainDrawerPersistent.value = !mainDrawerPersistent.value;
+
+  if (isDesktop.value && mainDrawerPersistent.value) {
+    mainDrawerOpen.value = true;
+  }
 }
 
 function isNavigationItemActive(navItem: MainNavigationItem) {

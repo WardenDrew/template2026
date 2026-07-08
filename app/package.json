@@ -9,6 +9,8 @@
     "lint:check": "oxfmt --check && oxlint",
     "dev": "quasar dev",
     "build": "quasar build",
+    "build:android": "quasar build -m capacitor -T android",
+    "build:android:debug": "quasar build -m capacitor -T android --debug",
     "typecheck": "vue-tsc --noEmit",
     "postinstall": "quasar prepare --silent"
   },

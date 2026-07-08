@@ -27,8 +27,10 @@ Useful local URLs:
 - `opaque-dotnet/` - server-side OPAQUE implementation used by the API.
 - `opaque-ts/` - browser-side OPAQUE implementation used by the SPA.
 - `conf/` - ignored local override mount for `appsettings.local.json`.
-- `docker-compose.yml`, `api.Dockerfile`, `web.Dockerfile`, `Caddyfile` -
+- `compose.yml`, `api/Dockerfile`, `app/Dockerfile`, `app/Caddyfile` -
   local web/API/Postgres stack with a same-origin `/api` reverse proxy.
+- `android-builder/` - Dockerized Node/JDK/Android SDK environment that wraps
+  Quasar Capacitor Android builds.
 
 ## What Is Intentionally Excluded
 
@@ -60,6 +62,16 @@ yarn lint:check
 yarn typecheck
 yarn build
 ```
+
+Android APK build:
+
+```sh
+./scripts/build-android-apk.sh
+```
+
+The script runs Quasar's Capacitor build command inside Docker and publishes
+`appdist/template-app-0.0.1.apk`. Set `ANDROID_BUILD_TYPE=debug` to produce a
+debug APK instead of the default release APK.
 
 Compose validation:
 

@@ -9,6 +9,8 @@ app/dist/
 app/.yarn/cache/
 app/.yarn/berry/
 app/.yarn/install-state.gz
+app/src-capacitor/
+appdist/
 appsettings.local.json
 **/appsettings.local.json
 secrets/

@@ -43,3 +43,5 @@
   encrypted-record UI into this template unless the target product explicitly
   requires it.
 - Run `yarn lint:check`, `yarn typecheck`, and `yarn build` for GUI changes.
+- Do not start or leave `yarn dev`/`quasar dev` running as a handoff step.
+  Human browser testing uses Docker Compose from the project root.

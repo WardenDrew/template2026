@@ -1,5 +1,5 @@
 <template>
-  <div class="column q-gutter-md">
+  <div class="column q-gutter-y-md">
     <div class="row items-center justify-end">
       <q-btn
         unelevated
@@ -34,7 +34,7 @@
         class="col-12 col-sm-6 col-lg-4"
       >
         <q-card bordered flat>
-          <q-card-section class="column q-gutter-sm">
+          <q-card-section class="column q-gutter-y-sm">
             <div class="text-h6">
               {{ resource.name }}
             </div>

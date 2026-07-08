@@ -12,7 +12,7 @@ RUN corepack enable \
 FROM caddy:2-alpine AS runtime
 WORKDIR /srv
 
-COPY Caddyfile /etc/caddy/Caddyfile
+COPY app/Caddyfile /etc/caddy/Caddyfile
 COPY --from=build /workspace/app/dist/spa/ /srv/
 
 EXPOSE 80
